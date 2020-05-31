@@ -12,21 +12,23 @@ mail.ehlo()
 mail.starttls()
 
 
-# mail credentials 
+# change the following variables 
 email_address = 'example@gmail.com' # email address where the emails will be sent
 email_pw = 'email_pw' # email password
+value = '10' # maximum ammount of money for the present
+data_limit = '25th of December' # limit date 
+subject = 'Secret Santa ' + current_year +'!' # email subject
+file = 'path/to/file/file.txt' # path to the file with the persons
+
 
 mail.login(email_address, email_pw)
 
 current_year = str(datetime.datetime.now().year)
-value = '10' # maximum ammount of money for the present
-data_limit = '25th of December' # limit date 
-subject = 'Secret Santa ' + current_year +'!' # email subject
 
 tuple_list = []
 email_list = []
 
-with open('path/to/file/file.txt', encoding='UTF-8') as inf:
+with open(file, encoding='UTF-8') as inf:
     reader = csv.reader(inf, delimiter=";")
     for row in reader:
         tuple_list.append((row[0], row[1]))
